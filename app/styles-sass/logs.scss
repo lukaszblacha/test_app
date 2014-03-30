@@ -1,0 +1,38 @@
+.log {
+	table {
+		background: rgba(255,255,255,.5);
+		border-collapse:collapse;
+		font-size: 14px;
+
+		td, th {
+			max-width:300px;
+			padding: 0 10px;
+			border: solid 1px #ccc;
+			overflow:hidden;
+			white-space:nowrap;
+		}
+
+		th {
+			@include horizontal-gradient($postGradientColor1,$postGradientColor2);
+			padding: 4px 10px;
+		}
+		
+		td {
+			text-overflow:ellipsis;
+		}
+
+		td:nth-child(1),
+		td:nth-child(2),
+		td:nth-child(4),
+		td:nth-child(5) {
+			text-align:right;
+		}
+		
+		td:nth-child(3) {
+			padding-left:0;
+		}
+		td:nth-child(4) {
+			padding-right:0;
+		}
+	}
+}

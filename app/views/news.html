@@ -1,0 +1,19 @@
+<div class="newsbox container">
+	<article ng-repeat="post in feed | orderBy:'-date'" class="post-teaser">
+		<h1 title="{[ post.title ]}">{[ post.title ]}</h1>
+		<p>{[ post.description ]}</p>
+		<footer>
+			<span class="post-date">
+				<i ng-show="!post.date">Date of publication is not known</i>
+				<i ng-show="post.date">{[ post.date | date:'yyyy-MM-dd hh:mm:ss a' ]}</i>
+			</span>
+			<span class="post-category">
+				<i ng-show="!post.category">No category</i>
+				<i ng-show="post.category">{[ post.category ]}</i>
+			</span>
+		</footer>
+		<a ng-show="post.link" class="btn btn-link readmore" ng-href="{[ post.link ]}" target="_blank">
+			<i class="fa fa-external-link"></i>
+		</a>
+	</div>
+</div>

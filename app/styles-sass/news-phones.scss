@@ -1,0 +1,51 @@
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1185px;
+		article {
+			max-width: (-2*$postPadding)+592px;
+		}
+	}
+}
+
+@media (max-width: 1199px) and (min-width: 980px) {
+	.container {
+		max-width: 965px;
+		article {
+			max-width: (-2*$postPadding)+482px;
+		}
+	}
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+	.container {
+		max-width: 750px;
+		article {
+			max-width: (-2*$postPadding)+375px;
+		}
+	}
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+	.container {
+		max-width: 465px;
+		article {
+			max-width: (-2*$postPadding)+465px;
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	.container {
+		max-width: 100%;
+		article {
+			max-width: 100%;
+			margin: 0;
+			height: auto;
+			@include border-radius(0);
+			
+			p {
+				height: auto;
+			}
+		}
+	}
+}

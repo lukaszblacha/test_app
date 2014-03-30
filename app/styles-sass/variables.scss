@@ -1,0 +1,11 @@
+$postGradientColor1: #F9F0D3;
+$postGradientColor2: #E7CAA6;
+
+$background: mix($postGradientColor1, $postGradientColor2) url('/assets/images/background.png');
+$featureBackground: #505050;
+$color: $featureBackground - 50;
+$featureColor: #f0f0f0;
+
+$postWidth: 300px;
+$postPadding: 20px;
+$postFontsize: 16px;

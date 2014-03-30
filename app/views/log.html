@@ -1,0 +1,32 @@
+<div class="log container">
+	<table>
+		<thead>
+			<tr>
+				<th>IP</th>
+				<th>Date</th>
+				<th>Header</th>
+				<th>Response Code</th>
+				<th>Content Length</th>
+				<th>Referrer</th>
+				<th>UA</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="log-line" ng-repeat="log in logs|slice:pagination.pageSize:pagination.pageNumber">
+				<td>{[ log.ip ]}</td>
+				<td>{[ log.date | date:'yyyy-MM-dd hh:mm:ss a' ]}</td>
+				<td title="{[ log.header ]}">
+					<span class="label {[ log.method | httpMethodLabelClass ]}">{[ log.method ]}</span>
+					{[ log.header | urlToFileName ]}
+				</td>
+				<td>
+					{[ log.responseCode ]}
+					<i class="indicator {[ log.responseCode | httpCodeIndicatorClass ]}"></i>
+				</td>
+				<td>{[ log.contentSize ]} bytes</td>
+				<td title="{[ log.referrer ]}">{[ log.referrer ]}</td>
+				<td title="{[ log.userAgent ]}">{[ log.userAgent ]}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

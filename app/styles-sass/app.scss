@@ -1,0 +1,70 @@
+@import "variables";
+@import "mixins";
+
+@import "ui";
+
+body {
+	padding: 40px 0 0 0;
+	margin: 0;
+	font-family: Roboto, Helvetica, Verdana, Arial, sans-serif;
+	font-size: 14px;
+	background: $background;
+	color: $color;
+}
+
+a, a:hover {
+	text-decoration: none;
+}
+
+header.fixed-top {
+	@include no-selection;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background: $featureBackground;
+	color: $featureColor;
+    padding: 10px;
+    line-height: 20px;
+	@include box-shadow( 0 0 5px #000 );
+
+	h1.brand {
+		font-size: 1em;
+		margin: 0 1em;
+		display: inline-block;
+		text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+
+		> a {
+			color: $featureColor;
+			text-decoration: none;
+		}
+	}
+	
+	#main-menu {
+		margin: -10px 0;
+		padding: 0;
+		display: inline-block;
+
+		> li {
+			display: inline-block;
+			list-style: none;
+			cursor: pointer;
+			a {
+				color: orangered;
+				padding: 10px 20px;
+				display: block;				
+			}
+		}
+		> li:hover a, > li:active > a {
+			color: orange;
+		}
+		> li.active {
+			background-color: rgba(0,0,0,.2);
+			@include box-shadow(0 0 5px rgba(0,0,0,.4) inset);
+		}
+	}
+}
+
+@import "news";
+@import "logs";
