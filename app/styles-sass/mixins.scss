@@ -60,3 +60,11 @@
 				-o-box-sizing: $val;
 					box-sizing: $val;
 }
+
+@mixin transition($dir,$time,$easing) {
+	-webkit-transition: $dir $time $easing;
+		-moz-transition: $dir $time $easing;
+			-ms-transition: $dir $time $easing;
+				-o-transition: $dir $time $easing;
+					transition: $dir $time $easing;
+}

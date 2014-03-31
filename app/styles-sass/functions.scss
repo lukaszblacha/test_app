@@ -1,0 +1,7 @@
+@function adjust-contrast($bgcolor) {
+	@if lightness($bgcolor)<50% {
+		@return lighten($bgcolor, 60%);
+	} @else {
+		@return darken($bgcolor, 60%); 
+	}
+}

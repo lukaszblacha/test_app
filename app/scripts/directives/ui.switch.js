@@ -1,15 +1,15 @@
 /*	
 	ui.switch.js - v0.1.0 - 2014-03-30
 	==============================================================
-	Creates iOS-like beautiful switch button that replaces default checkbox
+	Creates iOS-like switch button that replaces default checkbox
 	Copyright 2014 Łukasz Blacha
 */
 
 // Default configuration for directive
 app.value('uiSwitchDefaults', {
 	size:'20',
-	background0:'#ddd',
-	color0: '#333',
+	background0:'#777',
+	color0: '#ddd',
 	label0: 'O',
 	background1:'orange',
 	color1: 'white',
@@ -24,8 +24,8 @@ app.directive('uiSwitch', function factory( uiSwitchDefaults, $timeout ) {
 		template: '<div>\
 			<div class="ui-switch-outer">\
 				<div class="ui-switch-inner ui-switch-position" ng-click="toggleSwitch()">\
-					<div><span ng-bind-html-unsafe="options.label1"></span></div>\
-					<div><span ng-bind-html-unsafe="options.label0"></span></div>\
+					<div><span>{[ options.label1 ]}</span></div>\
+					<div><span>{[ options.label0 ]}</span></div>\
 				</div>\
 			</div>\
 			<div class="ui-switch-thumb ui-switch-position" ng-click="toggleSwitch()"></div>\
@@ -56,7 +56,7 @@ app.directive('uiSwitch', function factory( uiSwitchDefaults, $timeout ) {
 						angular.extend( scope.options, uiSwitchDefaults, scope.$parent.$eval(value) );
 						if( scope.value===undefined ) false;
 						element.css( { fontSize:scope.options.size+'px' } );
-						var options = element.find('.ui-switch-inner > div');
+						var options = $('.ui-switch-inner > div', element);
 
 						$(options[1]).css( { background: scope.options.background0, color: scope.options.color0 } );
 						$(options[0]).css( { background: scope.options.background1, color: scope.options.color1 } );
@@ -79,8 +79,8 @@ app.directive('uiSwitch', function factory( uiSwitchDefaults, $timeout ) {
 					});
 					
 					scope.$watch( 'value', function() {
-						if(  parseInt(scope.value)==false || scope.value===false ) element.find('.ui-switch-position').css( {left:'-1.25em'} );
-						else element.find('.ui-switch-position').css( {left:'0'} );
+						if(  parseInt(scope.value)==false || scope.value===false ) $('.ui-switch-position',element).css( {left:'-1.25em'} );
+						else $('.ui-switch-position',element).css( {left:'0'} );
 					} );
 
 					scope.$watch( 'disabled', function() {

@@ -1,6 +1,5 @@
 app.service('Storage', ['FeatureTester', function(FeatureTester) {
 	var storage = {};
-	window.sss = storage;
 	var selectedStorage;
 
 	// Fake object behaving like localStorage or sessionStorage

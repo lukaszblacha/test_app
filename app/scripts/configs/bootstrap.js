@@ -1,29 +1,29 @@
-var filters = angular.module('filters', [] );
-var app = angular.module('app', [ 'filters', 'ngRoute' ]);
+var app = angular.module('app', [ 'ngRoute' ]);
+
+// Replace default templating brackets. Useful when templates
+// are pre-generated using different templating system like Twig
 app.config(function($interpolateProvider) { $interpolateProvider.startSymbol('{['); $interpolateProvider.endSymbol(']}'); });
 
 // Create routes
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
-		when('/', { templateUrl: '/assets/views/index.html', controller: 'IndexController' }).
 		when('/feed/', { templateUrl: '/assets/views/news.html', controller: 'NewsController' }).
 		when('/log/', { templateUrl: '/assets/views/log.html', controller: 'LogController' }).
 		when('/feed2/', { templateUrl: '/assets/views/news.html', controller: 'JsonpController' }).
-        otherwise({ redirectTo: '/' });	
+        otherwise({ redirectTo: '/feed' });	
 }]);
 
 // Build menu
 app.run(['$rootScope', '$location', function($rootScope, $location) {
 	$rootScope.menu = {
-		selectedRoot: '',
 		items: [
-			{ label: 'Varnish Log', route: '/log/', root: '/log/' },
-			{ label: 'Feed #1', route: '/feed/', root: '/feed/' },
-			{ label: 'Feed #2', route: '/feed2/', root: '/feed2/' }
-		],
-		navigate: function( item ) {
-			$rootScope.menu.selectedRoot = item.root;
-			$location.path(item.route);
-		}
+			{ label: 'Varnish Log', route: '/log/' },
+			{ label: 'Feed #1', route: '/feed/' },
+			{ label: 'Feed #2', route: '/feed2/' }
+		]
 	};
+	// Save new location to properly display active menu item
+	$rootScope.$on('$routeChangeStart', function(evt, next, current) { 
+		$rootScope.menu.selectedRoute = next.$$route.originalPath;
+	});
 }]);

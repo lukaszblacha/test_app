@@ -1,0 +1,24 @@
+@media (max-width:767px) {
+	header.navbar.fixed-top {
+		position: absolute;
+		#main-menu {
+			display:none;
+			margin: 0;
+		}
+	}
+
+	header.navbar.fixed-top.open #main-menu {
+		display:block;
+		margin: 10px 0;
+		li {
+			display:block;
+			@include border-radius(5px);
+		}
+	}
+}
+
+@media (min-width:768px) {
+	.hide-large {
+		display: none !important;
+	}
+}

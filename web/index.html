@@ -27,17 +27,19 @@
 	</head>
 
 	<body>
-		<header class="fixed-top">
+		<header class="navbar fixed-top" ng-controller="MenuController">
 			<h1 class="brand">
 				<a href="/">#1 App</a>
 			</h1>
+			<button class="btn navbar-btn hide-large" ng-click="toggleMenu()">
+				<i class="fa fa-bars"></i>
+			</button>
+			<span ng-include src="'/assets/views/options.html'"></span>
 			<ul id="main-menu">
-				<li ng-repeat="item in menu.items" ng-class="{'active': menu.selectedRoot==item.root}">
-					<a ng-click="menu.navigate(item)">{[ item.label ]}</a>
+				<li ng-repeat="item in menu.items" ng-class="{'active': menu.selectedRoute==item.route}">
+					<a ng-href="#{[item.route]}">{[ item.label ]}</a>
 				</li>
 			</ul>
-			<button class="btn"><i class="fa fa-cog"></i></button>
-			<div ng-include src="'/assets/views/options.html'"></div>
 		</header>
 		<div ng-view></div>
 

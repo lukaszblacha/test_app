@@ -5,7 +5,10 @@ $background: mix($postGradientColor1, $postGradientColor2) url('/assets/images/b
 $featureBackground: #505050;
 $color: $featureBackground - 50;
 $featureColor: #f0f0f0;
+$feature2Background: orange;
 
 $postWidth: 300px;
 $postPadding: 20px;
 $postFontsize: 16px;
+
+$labelColors: ( success, #090 ), ( warning, #F80 ), ( error, #C00 ), ( info, #0083C4 ), ( inverse, #000 );

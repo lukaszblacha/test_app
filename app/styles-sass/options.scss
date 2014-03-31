@@ -1,0 +1,65 @@
+.options-container {
+	display: none;
+	z-index: 2000;
+	position: fixed;
+	top: -5000px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.2);
+	text-align: center;
+	.options {
+		color: $featureColor;
+		background: $featureBackground;
+		position: absolute;
+		display: inline-block;
+		top: -1000px;
+		width: 480px;
+		max-height: 990px;
+		margin: 0 -240px;
+		text-align: left;
+		border-radius: 3px;
+		padding: 15px;
+		box-shadow: 0 2px 5px rgba(0,0,0,.5);
+		
+		.options-row {
+			border-bottom: solid 1px rgba(0,0,0,.1);
+			label {
+				margin: .5em 0;
+				display: block;
+			}
+		}
+		.options-row:last-child {
+			border-bottom: none;
+		}
+		
+		.options-actions {
+			margin: 30px 0 0;
+			text-align:right;
+		}
+		
+		.btn-close {
+			position: absolute;
+			cursor: pointer;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			font-style: normal;
+		}
+		.btn {
+			color: $featureColor;
+		}
+	}
+}
+
+.options-container.open {
+	display: block;
+	height:100%;
+	 .options {
+		top: 50px;
+	}
+}
+
+@import 'options-responsive';
