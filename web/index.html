@@ -2,7 +2,7 @@
 <html ng-app="app" lang="en" xmlns:ng="http://angularjs.org">
     <head>
 		<!-- This will help us to properly display all UTF-8 characters -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<!-- Let Microsoft handle this page in the best way -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<!-- Prevent page scaling on iPhone and Android devices -->
@@ -10,10 +10,10 @@
 		<!-- Inform Blackberry devices that this app is smartphone-compatible -->
         <meta name="HandheldFriendly" content="true">
 		<!-- Get an elegant font and needed libraries from CDN (don't specify url schema so it could adjust dynamically) -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 		<link href="//fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic&amp;subset=latin-ext" rel="stylesheet" type="text/css">
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
 
 		<title>#1 App</title>
 
@@ -31,7 +31,7 @@
 			<h1 class="brand">
 				<a href="/">#1 App</a>
 			</h1>
-			<button class="btn navbar-btn hide-large" ng-click="toggleMenu()">
+			<button class="btn btn-nav hide-large" ng-click="toggleMenu()">
 				<i class="fa fa-bars"></i>
 			</button>
 			<span ng-include src="'/assets/views/options.html'"></span>

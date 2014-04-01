@@ -1,37 +1,54 @@
 <div>
-	<header class="navbar" style="margin-bottom: 10px">
-		<button ng-click="refresh()" class="btn btn-info"><i class="fa fa-refresh" ng-class="{'fa-spin':loading}"></i></button>
-	</header>
-	<div class="log container">
-		<table>
-			<thead>
-				<tr>
-					<th>IP</th>
-					<th>Date</th>
-					<th>Header</th>
-					<th>Response Code</th>
-					<th>Content Length</th>
-					<th>Referrer</th>
-					<!--<th>UA</th>-->
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="log-line" ng-repeat="log in logs|slice:pagination.pageSize:pagination.pageNumber">
-					<td>{[ log.ip ]}</td>
-					<td>{[ log.date | date:'yyyy-MM-dd hh:mm:ss a' ]}</td>
-					<td title="{[ log.header ]}">
-						<span class="label {[ log.method | httpMethodLabelClass ]}">{[ log.method ]}</span>
-						{[ log.header | urlToFileName ]}
-					</td>
-					<td>
-						{[ log.responseCode ]}
-						<i class="indicator {[ log.responseCode | httpCodeIndicatorClass ]}"></i>
-					</td>
-					<td>{[ log.contentSize ]} bytes</td>
-					<td title="{[ log.referrer ]}">{[ log.referrer ]}</td>
-					<!--<td title="{[ log.userAgent ]}">{[ log.userAgent ]}</td>-->
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <header class="navbar" style="margin-bottom: 10px">
+        <button ng-click="refresh()" class="btn btn-nav btn-info"><i class="fa fa-refresh" ng-class="{'fa-spin':loading}"></i></button>
+    </header>
+    <div class="log container">
+        <article style="height:14em">
+            <h1>Most visited urls</h1>
+            <ol>
+                <li ng-repeat="url in urls">
+                    <strong>{[ url.count ]} visits</strong> <span title="{[ url.url ]}">{[ url.url ]}</span>
+                </li>
+            </ol>
+        </article>
+        <article style="height:14em">
+            <h1>Most loaded hosts</h1>
+            <ol>
+                <li ng-repeat="host in hosts">
+                    <strong>{[ host.load ]} bytes</strong> <span title="{[ url.url ]}">{[ host.host ]}</span>
+                </li>
+            </ol>
+        </article>
+
+<!--
+        <table>
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Date</th>
+                    <th>Header</th>
+                    <th>Response Code</th>
+                    <th>Content Length</th>
+                    <th>Referrer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="log-line" ng-repeat="log in logs|slice:pagination.pageSize:pagination.pageNumber">
+                    <td>{[ log.ip ]}</td>
+                    <td>{[ log.date | date:'yyyy-MM-dd hh:mm:ss a' ]}</td>
+                    <td title="{[ log.header ]}">
+                        <span class="label {[ log.method | httpMethodLabelClass ]}">{[ log.method ]}</span>
+                        {[ log.header | urlToFileName ]}
+                    </td>
+                    <td>
+                        {[ log.responseCode ]}
+                        <i class="indicator {[ log.responseCode | httpCodeIndicatorClass ]}"></i>
+                    </td>
+                    <td>{[ log.contentSize ]} bytes</td>
+                    <td title="{[ log.referrer ]}">{[ log.referrer ]}</td>
+                </tr>
+            </tbody>
+        </table>
+//-->
+    </div>
 </div>

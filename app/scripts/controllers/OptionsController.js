@@ -1,5 +1,5 @@
 app.controller('OptionsController', ['$scope', '$element', 'AppConfig', function($scope, $element, AppConfig) {
-	$scope.cfg = AppConfig.getConfig();
+	$scope.cfg = angular.copy(AppConfig.getConfig());
 	
 	$scope.openConfig = function() {
 		$('.options-container', $element).addClass('open');
@@ -14,8 +14,7 @@ app.controller('OptionsController', ['$scope', '$element', 'AppConfig', function
 	};
 	
 	$scope.resetConfig = function() {
-		$scope.cfg = AppConfig.getDefaults();
-		AppConfig.setConfig($scope.cfg);
+		$scope.cfg = angular.copy(AppConfig.getConfig());
 	}
 	$scope.storeConfig = function() {
 		AppConfig.setConfig($scope.cfg);

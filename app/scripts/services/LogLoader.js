@@ -5,7 +5,7 @@ app.service('LogLoader', ['$http', function($http) {
 			$http.get( url ).success( function(data) {
 				callback(data);
 			} ).error( function(err, code) {
-				console.error('[ '+code+' ] There was an error while loading log file:', err);
+				console.error('[ '+code+' ] Unable to load log file.', err);
 			});
 		}
 	};

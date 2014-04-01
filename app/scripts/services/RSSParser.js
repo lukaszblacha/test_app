@@ -13,6 +13,7 @@ app.service('RSSParser', function() {
 				description:el.find("description").text(),
 				link: el.find("readmore").text()
 			};
+                        if( isNaN(item.date) ) item.date = 0;
 			result.push(item);
 		});
 

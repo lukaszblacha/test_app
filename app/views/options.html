@@ -1,28 +1,27 @@
 <span ng-controller="OptionsController">
-	<button class="btn navbar-btn" ng-click="openConfig()"><i class="fa fa-cog"></i></button>
-	<div class="options-container">
-		<div class="options">
-			<h3 style="margin-top:0">Data caching</h3>
-			<div>
-				<div class="options-row">
-					<span style="float:right" ui-switch ng-model="cfg.caching.feed1"></span>
-					<label>Allow Feed #1 caching</label>
-				</div>
-				<div class="options-row">
-					<span style="float:right" ui-switch ng-model="cfg.caching.feed2"></span>
-					<label>Allow Feed #2 caching</label>
-				</div>
-				<div class="options-row">
-					<span style="float:right" ui-switch ng-model="cfg.caching.varnishlog"></span>
-					<label>Allow Varnish Log caching</label>
-				</div>
-			</div>
-			<div class="options-actions">
-				<button class="btn" ng-click="resetConfig()">Restore</button>
-				<button class="btn btn-info" style="margin-left:5px" ng-click="storeConfig()">Save</button>
-			</div>
-			
-			<a class="btn-close" ng-click="closeConfig()">&times;</a>
-		</div>
-	</div>
+    <button class="btn btn-nav" ng-click="openConfig()"><i class="fa fa-cog"></i></button>
+    <div class="options-container">
+        <div class="options">
+            <h3 style="margin-top:0">Data caching</h3>
+            <div>
+                <div class="options-row">
+                    <span style="float:right" ui-switch ng-model="cfg.caching.feed1"></span>
+                    <label>Allow Feed #1 caching</label>
+                </div>
+                <div class="options-row">
+                    <span style="float:right" ui-switch ng-model="cfg.caching.feed2"></span>
+                    <label>Allow Feed #2 caching</label>
+                </div>
+                <div class="options-row">
+                    <span style="float:right" ui-switch ng-model="cfg.caching.varnishlog"></span>
+                    <label>Allow Varnish Log caching</label>
+                </div>
+            </div>
+            <div class="options-actions">
+                <button class="btn" ng-click="resetConfig()">Restore</button>
+                <button class="btn btn-info" style="margin-left:5px" ng-click="storeConfig()">Save</button>
+            </div>
+            <a class="btn btn-link btn-close" ng-click="closeConfig()">&times;</a>
+        </div>
+    </div>
 </span>

@@ -1,5 +1,4 @@
 a.btn, button.btn, .btn {
-	color: #333;
 	display: inline-block;
 	padding: 4px 10px;
 	font-size: 13px;
@@ -8,13 +7,14 @@ a.btn, button.btn, .btn {
 	outline:none;
 	text-align: center;
 	@include border-radius(4px);
-	@include box-shadow(
-		0 0 0 1px rgba(0,0,0,.3),
-		0 -1px 0 1px rgba(255,255,255,.1)
-	);
-	@include text-shadow(0 1px 1px rgba(0,0,0,.5));
-	@include horizontal-gradient( rgba(255,255,255,.1), rgba(0,0,0,.1) );
-	background-color: rgba(0,0,0,.05);
+	@if ( lightness($themeColorFaded)>50% ) {
+		@include text-shadow(0 1px 0px rgba(255,255,255,.5));
+	} @else {
+		@include text-shadow(0 -1px 0px rgba(0,0,0,.5));
+	}
+	@include horizontal-gradient( darken($themeColorFaded,5%), darken($themeColorFaded,15%) );
+	@include box-shadow(0 0 0 1px rgba(darken($themeColorFaded,20%),.8));
+	color: adjust-contrast( $themeColorMain );
 }
 
 .btn.btn-link {
@@ -24,26 +24,36 @@ a.btn, button.btn, .btn {
 	color: inherit;
 }
 
+.btn.btn-link:hover, .btn.btn-link:active {
+	background: none;
+}
+
 .btn:hover {
-	@include horizontal-gradient( rgba(0,0,0,.05), rgba(255,255,255,.1) );
 	@include box-shadow(
 		0 0 0 1px rgba(0,0,0,.3),
 		0 -1px 0 1px rgba(255,255,255,.1)
 	);
+	@include horizontal-gradient( $themeColorFaded, darken($themeColorFaded,10%) );
 }
 
 .btn:active {
 	@include box-shadow(
 		0 -1px 0 1px rgba(255,255,255,.1),
 		0 0 0 1px rgba(0,0,0,.3),
-		0 3px 3px rgba(0,0,0,.1) inset,
-		0 0 3px 2px rgba(0,0,0,.05) inset
+		0 3px 3px rgba(0,0,0,.2) inset,
+		0 0 3px 1px rgba(0,0,0,.05) inset !important
 	);
-	@include horizontal-gradient( rgba(0,0,0,.1), rgba(255,255,255,.1) );
+	@include horizontal-gradient( darken($themeColorFaded,20%), darken($themeColorFaded,10%) );
 }
 
 @each $lColor in $labelColors {
 	.btn.btn-#{nth($lColor,1)} {
+		@if ( lightness(nth($lColor,2))>50% ) {
+			@include text-shadow(0 1px 0px rgba(255,255,255,.5));
+		} @else {
+			@include text-shadow(0 -1px 0px rgba(0,0,0,.5));
+			@include box-shadow(0 0 0 1px rgba(darken(nth($lColor,2),20%),.8));
+		}
 		@include horizontal-gradient( lighten(nth($lColor,2),5%), darken(nth($lColor,2),5%) );
 		color: adjust-contrast(nth($lColor,2));
 	}
@@ -51,7 +61,13 @@ a.btn, button.btn, .btn {
 		@include horizontal-gradient( lighten(nth($lColor,2),10%), nth($lColor,2) );
 	}
 	.btn.btn-#{nth($lColor,1)}:active {
-		@include horizontal-gradient( darken(nth($lColor,2),10%), nth($lColor,2) );
+		@include box-shadow(
+			0 -1px 0 1px rgba(255,255,255,.1),
+			0 0 0 1px rgba(darken(nth($lColor,2),20%),.8),
+			0 3px 3px rgba(0,0,0,.2) inset,
+			0 0 3px 1px rgba(0,0,0,.05) inset !important
+		);
+		@include horizontal-gradient( darken(nth($lColor,2),5%), nth($lColor,2) );
 	}
 }
 
@@ -84,7 +100,7 @@ a.btn, button.btn, .btn {
 [ui-switch] {
 	@include no-selection;
 	position: relative;
-	width: 2.5em;
+	width: 2em;
 	height: 1em;
     color: #333;
 	font-weight: 500;
@@ -97,49 +113,60 @@ a.btn, button.btn, .btn {
 		@include transition( left, 0.25s, ease-out );
 	}
 	.ui-switch-thumb {
-		width: 1.25em;
+		width: 1em;
 		height: 1em;
-		box-shadow: 0 0 0.03em rgba(0,0,0,.5), 0 -0.5em 0 rgba(0,0,0,.05) inset, 0 0.5em 0 rgba(255,255,255,1) inset;
+		@include box-shadow(
+			0 0 0.03em rgba(0,0,0,.5),
+			0 -0.5em 0 rgba(0,0,0,.05) inset,
+			0 0.5em 0 rgba(255,255,255,1) inset
+		);
 		background: #fafafa;
 		position: absolute;
-		border-radius: 0.15em;
-		margin-left: 1.25em;
+		@include border-radius(0.15em);
+		margin-left: 1em;
 		border: solid 1px rgba(0,0,0,.15);
 		top: 0;
 	}
 	.ui-switch-outer {
 		position: relative;
-		width: 2.5em;
+		width: 2em;
 		height: 1em;
 		overflow: hidden;
-		border: solid 1px rgba(255,255,255,.8);
-		border-radius: 0.15em;
-		box-shadow: 0 0 0.03em rgba(0,0,0,0.3) inset;
+		border: solid 1px rgba(0,0,0,.2);
+		@include box-shadow( 0 -.01em 0 rgba(darken($themeColorFaded,100),.2), 0 .01em 0 rgba(lighten($themeColorFaded,100),.2) );
+		@include border-radius(0.15em);
 		.ui-switch-inner {
 			position:relative;
-			width: 3.5em;
+			width: 3em;
 			height: 1em;
 			left: -1em;
 			top: 0;
+			overflow: hidden;
 			> div {
-				width: 2em;
+				width: 1.5em;
 				position: absolute;
-				left: 1.75em;
+				left: 1.5em;
 				> span {
 					font-size: 65%;
 					display: block;
-					margin: 0 1.2em;
 					vertical-align: top;
+					margin: 0 .75em;
 				}
 			}
 			> div:first-child {
 				left: 0em;
+				@include horizontal-gradient( lighten($themeColorComplement,3%), darken($themeColorComplement,3%) );
+				color: adjust-contrast( $themeColorComplement );
 				> span {
-					margin-left:0;
+					margin-left: 0;
 				}
 			}
-			> div:last-child > span {
-				margin-right: 0;
+			> div:last-child {
+				@include horizontal-gradient( darken($themeColorFaded,9%), darken($themeColorFaded,3%) );
+				color: adjust-contrast( lighten($themeColorFaded, 6%) );
+				> span {
+					margin-right: 0;
+				}
 			}
 		}
 	}

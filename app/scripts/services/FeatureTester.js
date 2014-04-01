@@ -21,6 +21,14 @@ app.service('FeatureTester', function() {
 			return false;
 		}
 	})();
+	
+	tests['xhr2'] = (function() {
+		return ("withCredentials" in new XMLHttpRequest());
+	})();
+	
+	tests['xdr'] = (function() {
+		return ("XDomainRequest" in window);
+	})();
 
 	return {
 		// Checks if the given feature is supported.

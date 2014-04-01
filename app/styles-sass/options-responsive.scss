@@ -4,10 +4,11 @@
 	}
 
 	.options-container.open .options {
+		position: absolute;
 		right:10px;
 		left:10px;
 		top:10px;
-		bottom:10px;
+		bottom:auto;
 		width:auto;
 		margin:0;
 		box-shadow: 0 0 20px #000;

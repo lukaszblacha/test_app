@@ -1,15 +1,14 @@
-@import "variables";
-@import "mixins";
 @import "functions";
-
-@import "ui";
+@import "mixins";
+@import "variables";
 
 body {
 	padding: 40px 0 0 0;
 	margin: 0;
 	font-family: Roboto, Helvetica, Verdana, Arial, sans-serif;
 	font-size: 14px;
-	background: $background;
+	background-color: $background;
+	background-image: url('/assets/images/background.png');
 	color: $color;
 }
 
@@ -26,6 +25,7 @@ header.navbar.fixed-top {
 	@include box-shadow( 0 0 5px #000 );
 	background: $featureBackground;
 	color: $featureColor;
+	height: auto;
 }
 
 header.navbar {
@@ -35,19 +35,14 @@ header.navbar {
     padding: 10px;
     line-height: 20px;
 	height: 20px;
-	.btn {
+	.btn.btn-nav {
 		float: right;
-		color: $featureColor;
 		margin: -4px 0 -4px 8px;
 		font-size: 14px;
 		@include box-shadow(
 			0 -1px 0 1px rgba(255,255,255,.1),
 			0 0 0 1px rgba(0,0,0,.3)
 		);
-		background-color: rgba(255,255,255,.05);
-	}
-	.btn:hover {
-		background-color: rgba(255,255,255,.1);
 	}
 }
 
@@ -74,13 +69,13 @@ header.navbar.fixed-top {
 			list-style: none;
 			cursor: pointer;
 			a {
-				color: orangered;
+				color: $featureColor;
 				padding: 10px 20px;
 				display: block;				
 			}
 		}
 		> li:hover a, > li:active > a {
-			color: orange;
+			color: darken( $featureColor, 10% );
 		}
 		> li.active {
 			background-color: rgba(0,0,0,.2);
@@ -93,3 +88,4 @@ header.navbar.fixed-top {
 @import "news";
 @import "logs";
 @import "options";
+@import "ui";

@@ -1,11 +1,23 @@
-$postGradientColor1: #F9F0D3;
-$postGradientColor2: #E7CAA6;
+/* http://colorschemedesigner.com/#2321Tw0w0w0w0 */
+$themeColorMain: #C4F83E;
+$themeColorAlternative: #719D00;
+$themeColorBright: #FFFFFF;
+$themeColorComplement: #7F0055;
+$themeColorFaded: #E0E0E0;
 
-$background: mix($postGradientColor1, $postGradientColor2) url('/assets/images/background.png');
-$featureBackground: #505050;
-$color: $featureBackground - 50;
-$featureColor: #f0f0f0;
-$feature2Background: orange;
+$postGradientColor1: lighten( $themeColorMain, 15% );
+$postGradientColor2: lighten( $themeColorMain, 5% );
+
+$background: $themeColorBright;
+$featureBackground: $themeColorComplement;
+$feature2Background: $themeColorFaded;
+$dialogBackground: $themeColorFaded;
+
+$color: adjust-contrast($background);
+$featureColor: adjust-contrast($featureBackground);
+
+$feature2Color: adjust-contrast($feature2Background);
+$dialogColor: adjust-contrast($dialogBackground);
 
 $postWidth: 300px;
 $postPadding: 20px;

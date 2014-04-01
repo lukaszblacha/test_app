@@ -31,7 +31,7 @@ app.service('LogParser', function() {
 				method: header[0] || '',
 				header: header[1] || '',
 				responseCode: data[3],
-				contentSize: data[4],
+				contentSize: parseInt(data[4]),
 				referrer: data[5],
 				userAgent: data[6],
 				raw: lines[i]
