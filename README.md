@@ -3,41 +3,17 @@
 
 Test application that displays data from a RSS feed, JSONP-loaded feed and Varnish log.
 
-Requirements
-----
+Dependencies
+--------------
 To compile and use the project without problems you will need
   - some nodejs packages (*minify*, *uglifyjs*, *node-sass*) installed globally
   - *gzip* CLI tool
+  - Apache server with PHP to serve static files
   - several extra server modules enabled (for Apache it would be *rewrite_module* and *deflate_module*)
-
-This application runs on client-side only. There really is no backend.
-
-> QUOTE
-> asd
-
-Text in *italic*
-
-Version
-----
-
-0.1
-
-Tech
------------
-
-Dillinger uses a number of open source projects to work properly:
-
-* [EDITOR] - markdown editor
-* [Ace Editor] - awesome web-based text editor
-* [Marked] - a super fast port of Markdown to JavaScript
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [keymaster.js] - awesome keyboard handler lib by [@thomasfuchs]
-* [jQuery] - duh 
 
 Installation
 --------------
+After GIT clone command go to the root directory of application (*/<app_root>/*) and run deployment script. It will automatically generate and minify assets like CSS and JavaScript files and views used by angular.js. These files will be gzipped as well.
 
 Linux-based OS
 ```sh
@@ -47,32 +23,16 @@ Windows
 ```cmd
 ./deploy.bat
 ```
+Next you need to register a domain (e.g. *app.loc*) pointing to */<_app_root>/web/* directory and that's it. Go to *http://app.loc* and check if page loads normally.
 
-##### Configure Plugins. Instructions in following README.md files
+Development and production mode
+---------------
+Since there is no backend you need to manually take care of this kind of tasks. To switch to production mode just replace all javascript and stylesheet occurences in *index.html* to point to *.min.js* and *.min.css* files.
 
-* plugins/dropbox/README.md
-* plugins/github/README.md
-* plugins/googledrive/README.md
-
-```sh
-node app
-```
-
+Known bugs
+---------------
+  - RSS Feed server uses CORS which is only partially supported in IE9. We use XDR to fetch remote data but the loaded file has wrong character encoding. Did not found a way to convert it from ISO-8859-1 to UTF-8 yet.
 
 License
-----
+--------------
 MIT
-
-###### Links
-[john gruber]:http://daringfireball.net/
-[@thomasfuchs]:http://twitter.com/thomasfuchs
-[1]:http://daringfireball.net/projects/markdown/
-[marked]:https://github.com/chjj/marked
-[Ace Editor]:http://ace.ajax.org
-[node.js]:http://nodejs.org
-[Twitter Bootstrap]:http://twitter.github.com/bootstrap/
-[keymaster.js]:https://github.com/madrobby/keymaster
-[jQuery]:http://jquery.com
-[@tjholowaychuk]:http://twitter.com/tjholowaychuk
-[express]:http://expressjs.com
-[EDITOR] http://dillinger.io/
